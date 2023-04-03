@@ -12,7 +12,9 @@ const gptModelName = "gpt-3.5-turbo";
 */
 
 async function completionsChatTextModel(promptText) {
-  const messages = [{role: "user", content: promptText}];
+  const messages = [
+   {role: "user", content: promptText}
+  ];
 
   return await openai.createChatCompletion({
       model: gptModelName,
