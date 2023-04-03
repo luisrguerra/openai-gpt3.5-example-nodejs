@@ -11,8 +11,7 @@ async function runTerminal() {
         terminalReader.question('Prompt:\n', response);
     });
 
-    const textTokenSize = 512;
-    const apiResponseText = await api.generateTextFromApi(userInput, textTokenSize);
+    const apiResponseText = await api.generateTextFromApi(userInput);
     console.log("\nResponse:\n" + apiResponseText + "\n");
 
     terminalReader.close();
