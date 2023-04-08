@@ -1,7 +1,7 @@
 const readline = require('readline');
 const api = require('./api');
 
-async function runTerminal() {
+async function runTerminal(lastAnswer) {
     const terminalReader = readline.createInterface({
         input: process.stdin,
         output: process.stdout
@@ -11,11 +11,11 @@ async function runTerminal() {
         terminalReader.question('Prompt:\n', response);
     });
 
-    const apiResponseText = await api.generateTextFromApi(userInput);
+    const apiResponseText = await api.generateTextFromApiV2(userInput, lastAnswer);
     console.log("\nResponse:\n" + apiResponseText + "\n");
 
     terminalReader.close();
-    runTerminal();
+    runTerminal(apiResponseText);
 }
 
-runTerminal();
+runTerminal("");
