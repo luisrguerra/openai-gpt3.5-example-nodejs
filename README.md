@@ -1,4 +1,4 @@
-# Exemplo simples api OpenAI GPT 3 modelo de conclusão de texto
+# Exemplo simples api OpenAI GPT 3.5 recriando um ChatGPT de terminal
 
 Você escreve uma frase e o modelo gera um texto de resposta.
 
