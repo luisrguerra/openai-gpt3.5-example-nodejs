@@ -1,6 +1,8 @@
-# Exemplo simples api OpenAI GPT 3 modelo de conclusão de texto
+# Exemplo simples api OpenAI GPT 3.5 recriando um ChatGPT de terminal
 
 Você escreve uma frase e o modelo gera um texto de resposta.
+
+![MMDzvkAEuq](https://user-images.githubusercontent.com/31783838/230749907-73387f3c-5e1f-4c46-b593-32a51a26ab3d.png)
 
 ## Principais bibliotecas utilizadas no projeto:
 - openai (api da OpenAI)
