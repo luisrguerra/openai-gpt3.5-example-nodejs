@@ -16,7 +16,7 @@ async function askPrompt(){
     });
 
     const userInput = await new Promise((response) => {
-        terminalReader.question(promptText('Prompt:'), response);
+        terminalReader.question(promptText('Send a message:'), response);
     });
     terminalReader.close();
     return userInput;
@@ -39,4 +39,5 @@ async function runTerminal(messagesHistory) {
     runTerminal(mensagesObject);
 }
 
+console.log("ChatGPT 3.5 Turbo\n")
 runTerminal(messages);
