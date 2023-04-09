@@ -91,4 +91,8 @@ function initializeChat(behavior) {
   ];
 }
 
-module.exports = { generateTextFromApi, generateTextFromApiV2, generateTextFromApiV3, initializeChat};
+function lastMessage(messages){
+  return messages[messages.length - 1].content;
+}
+
+module.exports = { generateTextFromApi, generateTextFromApiV2, generateTextFromApiV3, initializeChat, lastMessage};

@@ -3,26 +3,39 @@ const api = require('./api');
 
 const messages = api.initializeChat("You are a helpful assistant.");
 
-function lastMessage(messages){
-  return messages[messages.length - 1].content;
+function promptText(text){
+    const cyanText = "\x1b[36m";
+    const whiteText = "\x1b[37m";
+    return (cyanText + text + '\n'+ whiteText);
 }
 
-async function runTerminal(messagesHistory) {
+async function askPrompt(){
     const terminalReader = readline.createInterface({
         input: process.stdin,
         output: process.stdout
     });
 
     const userInput = await new Promise((response) => {
-        terminalReader.question('Prompt:\n', response);
+        terminalReader.question(promptText('Prompt:'), response);
     });
+    terminalReader.close();
+    return userInput;
+}
+
+function printResponse(response){
+    const greenText = "\x1b[32m";
+    const whiteText = "\x1b[37m";
+    console.log(greenText + "\nResponse:\n" + whiteText + response + "\n");
+}
+
+async function runTerminal(messagesHistory) {
+    const userInput = await askPrompt();
 
     const apiResponseObject = await api.generateTextFromApiV3(userInput,messagesHistory);
-    const apiResponseText = lastMessage(apiResponseObject);
+    const apiResponseText = api.lastMessage(apiResponseObject);
     
-    console.log("\nResponse:\n" + apiResponseText + "\n");
+    printResponse(apiResponseText);
 
-    terminalReader.close();
     runTerminal(apiResponseObject);
 }
 
