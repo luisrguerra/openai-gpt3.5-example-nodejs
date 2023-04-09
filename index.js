@@ -31,12 +31,12 @@ function printResponse(response){
 async function runTerminal(messagesHistory) {
     const userInput = await askPrompt();
 
-    const apiResponseObject = await api.generateTextFromApiV3(userInput,messagesHistory);
-    const apiResponseText = api.lastMessage(apiResponseObject);
+    const mensagesObject = await api.generateChatMessagesV3(userInput,messagesHistory);
+    const textResponse = api.lastMessage(mensagesObject);
     
-    printResponse(apiResponseText);
+    printResponse(textResponse);
 
-    runTerminal(apiResponseObject);
+    runTerminal(mensagesObject);
 }
 
 runTerminal(messages);
