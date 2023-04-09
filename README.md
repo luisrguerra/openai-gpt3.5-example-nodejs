@@ -2,7 +2,7 @@
 
 Você escreve uma frase e o modelo gera um texto de resposta.
 
-![Code_aKCbwy27Rr](https://user-images.githubusercontent.com/31783838/230749746-f5b08187-7c8f-42e3-bd68-006b6ad45ebf.png)
+![MMDzvkAEuq](https://user-images.githubusercontent.com/31783838/230749907-73387f3c-5e1f-4c46-b593-32a51a26ab3d.png)
 
 ## Principais bibliotecas utilizadas no projeto:
 - openai (api da OpenAI)
