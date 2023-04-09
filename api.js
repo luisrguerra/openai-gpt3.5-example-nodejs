@@ -48,6 +48,20 @@ async function completionsChatTextModelV2(promptText, lastAnswer) {
     });
 }
 
+async function completionsChatTextModelV3(messages) {
+  return await openai.createChatCompletion({
+      model: gptModelName,
+      messages: messages,
+      /*
+      temperature: ,
+      max_tokens: ,
+      top_p: ,
+      frequency_penalty: ,
+      presence_penalty: ,
+      */
+    });
+}
+
 async function generateTextFromApi(promptText) {
   const apiResponse = await completionsChatTextModel(promptText);
   return apiResponse.data.choices[0].message.content;
@@ -58,4 +72,23 @@ async function generateTextFromApiV2(promptText, lastAnswer) {
   return apiResponse.data.choices[0].message.content;
 }
 
-module.exports = { generateTextFromApi, generateTextFromApiV2};
+async function generateTextFromApiV3(promptText, messages) {
+  const prompt = {role: "user", content: promptText};
+  messages.push(prompt);
+
+  const apiResponse = await completionsChatTextModelV3(messages);
+  const textResponse = apiResponse.data.choices[0].message.content;
+
+  const assistantResponse = {role: "assistant", content: textResponse};
+  messages.push(assistantResponse);
+
+  return messages;
+}
+
+function initializeChat(behavior) {
+  return [
+    {role: "system", content: behavior}
+  ];
+}
+
+module.exports = { generateTextFromApi, generateTextFromApiV2, generateTextFromApiV3, initializeChat};
